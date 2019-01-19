@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        svg {
+            width: 100%;
+        }
+        #myGraph rect{
+            stroke : rgb(0, 140, 0);
+            stroke-width: 2px;
+            fill : rgb(255,0,0);
+        }
+    </style> 
+</head>
+<body>
+    <h1>가로형 막대그래프</h1>
+    <button id="updateButton">데이터 업데이트</button>
+    <svg id="myGraph"></svg>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.js"></script>
+    <script>
+        var dataSet = [300, 130, 5, 60, 240, 400];
+
+        d3.select("#myGraph")
+        .selectAll("rect")
+        .data(dataSet)
+        .enter()
+        .append("rect")
+        .attr("x", 0)
+        .attr("y", function(d, i){
+            return i*25;
+        })
+        .on("click", function(){
+            alert(11);
+            d3.select(this)
+            .style("fill", "cyan")
+        })
+        .attr("height", "20px")
+        .attr("width", "0px")
+        .transition()
+        .delay(function(d,i){
+            return i*500;
+        })
+        .duration(1500)
+        .attr("width", function(d,i) {
+            return d + "px";
+        })
+        
+
+
+        d3.select("#updateButton")
+        .on("click", function(){
+            // dataSet = [20, 230, 150, 10, 20];
+            for(var i=0; i< dataSet.length; i++){
+                dataSet[i] = Math.floor(Math.random()*320); 
+            }
+            
+            d3.select("#myGraph")
+            .selectAll("rect")
+            .data(dataSet)
+            .attr("width", function(d,i) {
+                return d + "px";
+            })
+        })
+    
+    </script>
+</body>
+</html>

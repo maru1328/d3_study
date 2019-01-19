@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        svg {
+            width: 100%;
+            height : 10000px;
+        }
+        #myGraph rect{
+            stroke : rgb(0, 140, 0);
+            stroke-width: 2px;
+            fill : rgb(255,0,0);
+        }
+        .axis text {
+            font-family: san-serif;
+            font-size: 11px;
+        }
+        .axis path,
+        .axis line {
+            fill: none;
+            stroke: black;
+        }
+    </style>
+</head>
+<body>
+    <!-- <svg>
+        <rect x="10" y="30" width="100"  height="80" />
+    </svg> -->
+
+    <svg id="myGraph"></svg>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.js"></script>
+    <script>
+        
+
+    var dataSet = [300, 130, 5, 60, 240, 400];    
+    
+
+    d3.select("#myGraph")
+    .selectAll("rect")
+    .data(dataSet)
+    .enter()
+    .append("rect")
+    .attr("x", 0)
+    .attr("y", function(d, i){
+        return i*25;
+    })
+    .attr("width", function(d, i){
+        return d +"px"
+    })
+    .attr("height", "20px")
+            
+    var xScale = d3.scaleLinear()
+        .domain([0, 400])
+        .range([0, 400])
+
+    d3.select("#myGraph")
+    .append("g")
+    .attr("class", "axis")
+    .attr("transform", "translate(0," + dataSet.length *25 +")")
+    .attr("y", "100")
+    .call(d3.axisBottom(xScale))
+
+
+    </script>
+</body>
+</html>
