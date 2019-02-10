@@ -5,40 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <style>
-        svg {
-            width: 320px;
-            height: 240px;
-            border: 1px solid black;
-        }
-        rect {
-            stroke-width: 4px;
-            stroke: black;
-            fill: orange;
-        }
-        circle {
-            opacity: 0.75;
-            fill: blue;
-        }
-    </style>
 </head>
 <body>
     <!-- 
         <svg>
         <rect x="10" y="30" width="100" height="80">
+
+        //둥군모서리 사각형
+        <rect x="10" y="30" width="100" height="80" rx="20" rx="20">
         </svg> 
     -->
     <svg id="myGraph"></svg> 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.js"></script>
+    <p>#d3를 이용한 react만들기</p>
     <script>
-        d3.select('#myGraph')
-        .append('rect')
-        .attr('x', '10')
-        .attr('y', '10')
-        .attr('width', '100')
-        .attr('height', '80')
-    
+        // d3.select('#myGraph')
+        // .append('rect')
+        // .attr('x', '10')
+        // .attr('y', '10')
+        // .attr('width', '100')
+        // .attr('height', '80')
     </script>
 </body>
 </html>
